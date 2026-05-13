@@ -98,3 +98,5 @@ bie-daalt-14/
 | `newBookId` | (динамик) | POST-оос chain хийгдэнэ |
 
 > **Анхааруулга:** Secret / token байхгүй тул placeholder шаардахгүй.
+
+Updated API documentation
