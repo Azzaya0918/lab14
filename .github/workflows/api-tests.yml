@@ -1,0 +1,52 @@
+name: API tests
+
+on: [push, pull_request]
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Кодыг татаж авах
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Node.js суулгах
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3. Newman болон reporter суулгах
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-htmlextra
+
+      # 4. Express сервер суулгах
+      - name: Install server dependencies
+        run: |
+          cd server
+          npm install
+
+      # 5. Арын дэвсгэрт сервер эхлүүлэх
+      - name: Start API server
+        run: |
+          cd server
+          node index.js &
+          sleep 3
+
+      # 6. Newman тестүүдийг ажиллуулах
+      - name: Run API tests
+        run: |
+          newman run postman/collection.json \
+            -e postman/env.ci.json \
+            --reporters cli,junit,htmlextra \
+            --reporter-junit-export reports/api.xml \
+            --reporter-htmlextra-export reports/api.html
+
+      # 7. Тестийн тайланг артефакт болгон хадгалах
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: api-test-report
+          path: reports/

@@ -1,0 +1,13 @@
+{
+  "name": "bie-daalt-14-server",
+  "version": "1.0.0",
+  "description": "Mini Book API for Lab 14 API Testing",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
