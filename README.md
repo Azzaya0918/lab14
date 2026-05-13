@@ -1,4 +1,4 @@
-# Бие даалт 14 — API Testing with Postman + Newman
+# Лаб 14 — API Testing with Postman + Newman
 
 **Хичээл:** F.CSM311 — Программ хангамжийн бүтээлт  
 **Хувилбар:** 3 — Жижиг Express сервер  
