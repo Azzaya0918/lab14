@@ -19,3 +19,5 @@
 ## 5. API өөрчлөгдвөл collection-ийн аль хэсэг хамгийн их эвдрэх вэ?
 
 **Chain-д суурилсан тестүүд** хамгийн эмзэг. Жишээ нь, `POST /api/books`-ын response-д `data.id` field `data.bookId` болж өөрчлөгдвөл, `pm.environment.set('newBookId', d.data.id)` нь `undefined` хадгалж, дараагийн `PUT` болон `DELETE` request 404 буцаана. Мөн schema assertion-ууд (`pm.expect(d).to.have.property('id')`) бүгд fail болно. Эмзэг байдлыг бууруулахын тулд: (1) schema-г тусдаа JSON Schema объектоор баталгаажуулах, (2) chain variable-г алдаа гарвал тодорхой мессежтэйгээр шалгах, (3) API-ийн breaking change-ийг versioning-аар зохицуулах (`/api/v1/books`) нь зөв арга барил.
+
+ 
